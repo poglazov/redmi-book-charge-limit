@@ -16,7 +16,7 @@ May also work on other Xiaomi/Redmi laptops that use the `MiCommonInterface` WMI
 # Check current limit
 .\RedmiBookChargeLimit.ps1 -Action Status
 
-# Set charge limit
+# Set charge limit (value is a percentage)
 .\RedmiBookChargeLimit.ps1 -Action Set -Limit 40
 .\RedmiBookChargeLimit.ps1 -Action Set -Limit 50
 .\RedmiBookChargeLimit.ps1 -Action Set -Limit 60
@@ -30,7 +30,7 @@ May also work on other Xiaomi/Redmi laptops that use the `MiCommonInterface` WMI
 If script execution is blocked by execution policy, run with:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File ".\RedmiBookChargeLimit.ps1" -Action Set -Limit 80
+powershell -ExecutionPolicy Bypass -File ".\RedmiBookChargeLimit.ps1" -Action Set -Limit 40
 ```
 
 ## Persist limit across reboots
@@ -42,7 +42,7 @@ Run the following in an administrator PowerShell, adjusting the path and limit a
 ```powershell
 $action = New-ScheduledTaskAction `
     -Execute "powershell.exe" `
-    -Argument "-ExecutionPolicy Bypass -File `"C:\ProgramData\RedmiBookChargeLimit\RedmiBookChargeLimit.ps1`" -Action Set -Limit 80"
+    -Argument "-ExecutionPolicy Bypass -File `"C:\ProgramData\RedmiBookChargeLimit\RedmiBookChargeLimit.ps1`" -Action Set -Limit 40"
 
 $trigger = New-ScheduledTaskTrigger -AtStartup
 
