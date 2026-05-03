@@ -51,7 +51,7 @@ $principal = New-ScheduledTaskPrincipal `
     -LogonType ServiceAccount `
     -RunLevel Highest
 
-$settings = New-ScheduledTaskSettingsSet -AcOnly $false
+$settings = New-ScheduledTaskSettingsSet -DisallowStartIfOnBatteries $false -StopIfGoingOnBatteries $false
 
 Register-ScheduledTask `
     -TaskName "RedmiBookChargeLimit" `
