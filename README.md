@@ -51,11 +51,14 @@ $principal = New-ScheduledTaskPrincipal `
     -LogonType ServiceAccount `
     -RunLevel Highest
 
+$settings = New-ScheduledTaskSettingsSet -AcOnly $false
+
 Register-ScheduledTask `
     -TaskName "RedmiBookChargeLimit" `
     -Action $action `
     -Trigger $trigger `
-    -Principal $principal
+    -Principal $principal `
+    -Settings $settings
 ```
 
 To remove the task:
